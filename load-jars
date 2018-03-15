@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function load_jars {
+	mvn install:install-file -Dfile=$1 -DgroupId=$2 -DartifactId=$3 -Dversion=$4 -Dpackaging=jar
+	echo
+	echo "        <dependency>"
+	echo "            <groupId>$2</groupId>"
+	echo "            <artifactId>$3</artifactId>"
+	echo "            <version>$4</version>"
+	echo "        </dependency>"
+	echo
+	echo
+}
+
+load_jars ojdbc7.jar oracle ojdbc7 12.1.0.1
+load_jars ojdbc8.jar oracle ojdbc8 12.2.0.1
